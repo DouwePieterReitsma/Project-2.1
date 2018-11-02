@@ -32,14 +32,14 @@ void initialize_serial_communication()
     UCSR0C=_BV(UCSZ01)|_BV(UCSZ00);
 }
 
-void transmit(uint8_t value)
+void transmit(char value)
 {
     loop_until_bit_is_set(UCSR0A, UDRE0);
     
     UDR0 = value;
 }
 
-uint8_t receive(void)
+char receive(void)
 {
     loop_until_bit_is_set(UCSR0A, RXC0);
     

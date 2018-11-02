@@ -10,8 +10,8 @@
 #define SERIAL_COMMUNICATION_H_
 
 void initialize_serial_communication();
-void transmit(uint8_t value);
-uint8_t receive(void);
+void transmit(char value);
+char receive(void);
 
 
 #endif /* SERIAL_COMMUNICATION_H_ */
