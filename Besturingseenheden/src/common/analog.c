@@ -1,6 +1,6 @@
 #include "analog.h"
 
-void initialize_analog_ports(void)
+void init_analog_ports(void)
 {
     
 }

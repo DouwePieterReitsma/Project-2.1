@@ -16,7 +16,7 @@
 
 #define UBRRVAL 51
 
-void initialize_serial_ports(void)
+void init_serial_ports(void)
 {
     //set baud rate 19200
     UBRR0H = 0;
@@ -41,7 +41,8 @@ void transmit(char value)
 
 void transmit_message(const char* message)
 {
-    for (; *message != '\0'; message++) transmit(*message);       
+    for(; *message != '\0'; message++) 
+        transmit(*message);       
 }
 
 char receive(void)

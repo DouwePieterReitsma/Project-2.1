@@ -11,7 +11,7 @@
 
 #define TEMPERATURE_SENSOR_VOLTAGE 5000
 
-void initialize_temperature_sensor(void);
+void init_temperature_sensor(void);
 float get_temperature_in_celsius(void);
 
 

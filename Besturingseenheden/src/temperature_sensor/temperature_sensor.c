@@ -7,7 +7,7 @@
 
 #include "temperature_sensor.h"
 
-void initialize_temperature_sensor(void)
+void init_temperature_sensor(void)
 {
        
 }

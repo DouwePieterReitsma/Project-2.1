@@ -14,8 +14,8 @@
 
 int main(void)
 {
-    initialize_serial_ports();
-    initialize_analog_ports();
+    init_serial_ports();
+    init_analog_ports();
     
     while (1) 
     {
