@@ -41,11 +41,7 @@ void transmit(char value)
 
 void transmit_message(const char* message)
 {
-    while(*message != '\0')
-    {
-        transmit(*message);
-        message++;
-    }        
+    for (; *message != '\0'; message++) transmit(*message);       
 }
 
 char receive(void)
