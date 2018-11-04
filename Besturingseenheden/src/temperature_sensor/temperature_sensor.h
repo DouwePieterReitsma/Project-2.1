@@ -9,7 +9,10 @@
 #ifndef TEMPERATURE_SENSOR_H_
 #define TEMPERATURE_SENSOR_H_
 
+#define TEMPERATURE_SENSOR_VOLTAGE 5000
 
+void initialize_temperature_sensor(void);
+float get_temperature_in_celsius(void);
 
 
 #endif /* TEMPERATURE_SENSOR_H_ */
