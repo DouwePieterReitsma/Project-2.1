@@ -16,7 +16,7 @@
 
 #define UBRRVAL 51
 
-void init_serial_ports(void)
+void init_serial_port(void)
 {
     //set baud rate 19200
     UBRR0H = 0;
