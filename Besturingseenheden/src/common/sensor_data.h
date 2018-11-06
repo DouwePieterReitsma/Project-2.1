@@ -11,21 +11,21 @@
 
 typedef enum
 {
-    ROLLED_IN = 0,
-    ROLLED_OUT = 1,
-    ROLLING_IN = 2,
-    ROLLING_OUT = 3
-} SunblindStatus;  
+    SENSOR_TYPE_TEMPERATURE = 0,
+    SENSOR_TYPE_LIGHT = 1,
+    SENSOR_TYPE_DISTANCE = 2
+} SensorType;
 
 typedef struct
 {
-    SunblindStatus status;
+    SensorType type;
     
-    float temperature;
-    
-    float light_intensity;
-    
-    int tick;    
+    union
+    {
+        int distance;
+        float temperature;
+        float light_intensity;
+    } data;    
 } SensorData;
 
 int serialize_sensor_data(SensorData* data, char* buffer);

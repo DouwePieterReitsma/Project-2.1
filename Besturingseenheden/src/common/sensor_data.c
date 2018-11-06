@@ -1,11 +1,28 @@
 #include "sensor_data.h"
 
+#include <stdio.h>
+
 int serialize_sensor_data(SensorData* data, char* buffer)
 {
-    if (!data)
-        return -1;
-        
-    sscanf(buffer, "%d:%f:%f:%d\n", data->status, data->temperature, data->light_intensity, data->tick);
+    if (data == NULL)
+    {
+        return 0;
+    }
+    
+    switch(data->type)
+    {
+        case SENSOR_TYPE_TEMPERATURE:
+            sprintf(buffer, "%d:%f\n", data->type, data->data.temperature);
+            break;
+        case SENSOR_TYPE_LIGHT:
+            sprintf(buffer, "%d:%f\n", data->type, data->data.light_intensity);
+            break;
+        case SENSOR_TYPE_DISTANCE:
+            sprintf(buffer, "%d:%d\n", data->type, data->data.distance);
+            break;
+        default:
+            return 0;
+    }
     
     return 1;
 }

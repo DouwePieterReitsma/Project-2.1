@@ -8,10 +8,9 @@
 #include <avr/io.h>
 #define F_CPU 16E6
 #include <avr/delay.h>
-#include <stdlib.h>
-#include <string.h>
 
 #include "common/serial.h"
+#include "common/sensor_data.h"
 #include "temperature_sensor/temperature_sensor.h"
 
 int main(void)
@@ -23,9 +22,12 @@ int main(void)
     
     while (1) 
     {
-        float temperature = get_temperature_in_celsius();
+        SensorData data;
+        data.type = SENSOR_TYPE_TEMPERATURE;
+        data.data.distance = 100;
+        data.data.temperature = get_temperature_in_celsius();
         
-        sprintf(buffer, "[%d]", (int)temperature);
+        int result = serialize_sensor_data(&data, buffer);
         
         transmit_message(buffer);
         
