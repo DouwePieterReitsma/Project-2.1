@@ -7,6 +7,8 @@
 
 #include "temperature_sensor.h"
 #include "../common/analog.h"
+#include "../common/serial.h"
+#include "../common/sensor_data.h"
 
 void init_temperature_sensor(void)
 {
@@ -22,4 +24,20 @@ float get_temperature_in_celsius(void)
     float temperature = (voltage - 0.5f) * 100;
     
     return temperature;
+}
+
+void transmit_temperature()
+{
+    char buffer[100];
+    
+    SensorData data;
+    data.type = SENSOR_TYPE_TEMPERATURE;
+    data.data.temperature = get_temperature_in_celsius();
+    
+    int result = serialize_sensor_data(&data, buffer);
+    
+    if (result)
+    {
+        transmit_message(buffer);
+    }
 }

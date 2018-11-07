@@ -12,5 +12,7 @@
 void init_temperature_sensor(void);
 float get_temperature_in_celsius(void);
 
+void transmit_temperature();
+
 
 #endif /* TEMPERATURE_SENSOR_H_ */
