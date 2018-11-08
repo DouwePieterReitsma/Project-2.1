@@ -12,7 +12,8 @@
 void init_temperature_sensor(void);
 float get_temperature_in_celsius(void);
 
-void transmit_temperature();
+void measure_temperature(void);
+void transmit_average_temperature(void);
 
 
 #endif /* TEMPERATURE_SENSOR_H_ */

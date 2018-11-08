@@ -10,6 +10,7 @@
 #include <util/delay.h>
 
 #include "common/AVR_TTC_scheduler.h"
+#include "common/serial.h"
 #include "temperature_sensor/temperature_sensor.h"
 
 int main(void)
@@ -18,8 +19,8 @@ int main(void)
     init_temperature_sensor();
     SCH_Init_T1();
     
-    // 1 tick = 10ms, 500 * 10ms = 5s
-    SCH_Add_Task(&transmit_temperature, 0, 500);
+    SCH_Add_Task(&measure_temperature, 0, 100);
+    SCH_Add_Task(&transmit_average_temperature, 4000, 4000);
     
     SCH_Start();
     

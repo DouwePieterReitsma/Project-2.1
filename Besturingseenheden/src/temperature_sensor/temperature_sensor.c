@@ -10,6 +10,10 @@
 #include "../common/serial.h"
 #include "../common/sensor_data.h"
 
+#define NUM_TEMPERATURES 40
+
+float temperatures[NUM_TEMPERATURES];
+
 void init_temperature_sensor(void)
 {
     init_analog_port();      
@@ -17,7 +21,7 @@ void init_temperature_sensor(void)
 
 float get_temperature_in_celsius(void)
 {
-    int reading = read_analog_port();
+    int reading = read_analog_port(0);
     
     float voltage = reading * (5.0f / 1024.0f);
     
@@ -26,13 +30,36 @@ float get_temperature_in_celsius(void)
     return temperature;
 }
 
-void transmit_temperature()
+void measure_temperature(void)
+{
+    static int index = 0;
+    
+    if(index == NUM_TEMPERATURES)
+    {
+        index = 0;
+    }
+    
+    temperatures[index] = get_temperature_in_celsius();
+    
+    index++;
+}
+
+void transmit_average_temperature()
 {
     char buffer[100];
+    float total = 0.0f;
+    
+    for(int i = 0; i < NUM_TEMPERATURES; i++)
+    {
+        total += temperatures[i];
+    }
+    
     
     SensorData data;
     data.type = SENSOR_TYPE_TEMPERATURE;
-    data.data.temperature = get_temperature_in_celsius();
+    //data.data.temperature = get_temperature_in_celsius();
+    data.data.temperature = total / NUM_TEMPERATURES;
+    
     
     int result = serialize_sensor_data(&data, buffer);
     
