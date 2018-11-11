@@ -1,7 +1,9 @@
 #ifndef ANALOG_H
 #define ANALOG_H
 
-void init_analog_port(void);
-int read_analog_port(int port);
+#include <stdint.h>
+
+void init_adc(void);
+uint16_t read_analog_pin(uint8_t pin);
 
 #endif

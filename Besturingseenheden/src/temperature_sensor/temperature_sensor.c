@@ -16,12 +16,12 @@ float temperatures[NUM_TEMPERATURES];
 
 void init_temperature_sensor(void)
 {
-    init_analog_port();      
+    init_adc();     
 }
 
 float get_temperature_in_celsius(void)
 {
-    int reading = read_analog_port(0);
+    int reading = read_analog_pin(0);
     
     float voltage = reading * (5.0f / 1024.0f);
     
