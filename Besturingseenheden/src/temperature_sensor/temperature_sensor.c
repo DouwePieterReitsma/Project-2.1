@@ -44,7 +44,7 @@ void measure_temperature(void)
     index++;
 }
 
-void transmit_average_temperature()
+void transmit_average_temperature(void)
 {
     char buffer[100];
     float total = 0.0f;
@@ -57,7 +57,6 @@ void transmit_average_temperature()
     
     SensorData data;
     data.type = SENSOR_TYPE_TEMPERATURE;
-    //data.data.temperature = get_temperature_in_celsius();
     data.data.temperature = total / NUM_TEMPERATURES;
     
     

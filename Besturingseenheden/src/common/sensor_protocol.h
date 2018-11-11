@@ -9,6 +9,8 @@
 #ifndef SENSOR_DATA_H_
 #define SENSOR_DATA_H_
 
+#include <stdint.h>
+
 typedef enum
 {
     SENSOR_TYPE_TEMPERATURE = 0,
@@ -22,7 +24,7 @@ typedef struct
     
     union
     {
-        int distance;
+        uint16_t distance;
         float temperature;
         float light_intensity;
     } data;    
