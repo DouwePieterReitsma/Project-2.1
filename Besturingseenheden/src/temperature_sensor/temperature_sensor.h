@@ -9,6 +9,8 @@
 #ifndef TEMPERATURE_SENSOR_H_
 #define TEMPERATURE_SENSOR_H_
 
+#define TEMPERATURE_ANALOG_PORT 0
+
 void init_temperature_sensor(void);
 float get_temperature_in_celsius(void);
 

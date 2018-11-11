@@ -29,7 +29,6 @@ typedef struct
 } SensorData;
 
 int serialize_sensor_data(SensorData* data, char* buffer);
-int deserialize_sensor_data(const char* str, SensorData* dest);
 
 
 #endif /* SENSOR_DATA_H_ */

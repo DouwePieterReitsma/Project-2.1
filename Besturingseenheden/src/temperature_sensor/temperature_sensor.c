@@ -8,7 +8,7 @@
 #include "temperature_sensor.h"
 #include "../common/analog.h"
 #include "../common/serial.h"
-#include "../common/sensor_data.h"
+#include "../common/sensor_protocol.h"
 
 #define NUM_TEMPERATURES 40
 
@@ -16,12 +16,12 @@ float temperatures[NUM_TEMPERATURES];
 
 void init_temperature_sensor(void)
 {
-    init_adc();     
+    init_adc();    
 }
 
 float get_temperature_in_celsius(void)
 {
-    int reading = read_analog_pin(0);
+    int reading = read_analog_pin(TEMPERATURE_ANALOG_PORT);
     
     float voltage = reading * (5.0f / 1024.0f);
     

@@ -26,8 +26,3 @@ int serialize_sensor_data(SensorData* data, char* buffer)
     
     return 1;
 }
-
-int deserialize_sensor_data(const char* data, SensorData* buffer)
-{
-    
-}
