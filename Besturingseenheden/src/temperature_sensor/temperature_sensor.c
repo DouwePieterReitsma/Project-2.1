@@ -13,6 +13,7 @@
 #define NUM_TEMPERATURES 40
 
 float temperatures[NUM_TEMPERATURES];
+float average_temperature = 0.0f;
 
 void init_temperature_sensor(void)
 {
@@ -44,23 +45,28 @@ void measure_temperature(void)
     index++;
 }
 
+void calculate_average_temperature(void)
+{
+    average_temperature = 0.0f; // reset average temperature
+    
+    for(int i = 0; i < NUM_TEMPERATURES; ++i)
+    {
+        average_temperature += temperatures[i];
+    }
+    
+    average_temperature /= NUM_TEMPERATURES;
+}
+
 void transmit_average_temperature(void)
 {
     char buffer[100];
-    float total = 0.0f;
-    
-    for(int i = 0; i < NUM_TEMPERATURES; i++)
-    {
-        total += temperatures[i];
-    }
-    
-    
     SensorData data;
+    int result = 0;
+    
     data.type = SENSOR_TYPE_TEMPERATURE;
-    data.data.temperature = total / NUM_TEMPERATURES;
+    data.data.temperature = average_temperature;
     
-    
-    int result = serialize_sensor_data(&data, buffer);
+    result = serialize_sensor_data(&data, buffer);
     
     if (result)
     {

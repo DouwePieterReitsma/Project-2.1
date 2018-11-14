@@ -20,6 +20,7 @@ int main(void)
     SCH_Init_T1();
     
     SCH_Add_Task(&measure_temperature, 0, 100); // measure temperature every second
+    SCH_Add_Task(&calculate_average_temperature, 4000, 4000); // calculate average temperature every 40 seconds
     SCH_Add_Task(&transmit_average_temperature, 6000, 6000); // transmit average temperature every 60 seconds
     
     SCH_Start();
