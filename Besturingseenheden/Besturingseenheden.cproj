@@ -137,6 +137,7 @@
   <ItemGroup>
     <Folder Include="src\" />
     <Folder Include="src\common" />
+    <Folder Include="src\light_sensor" />
     <Folder Include="src\temperature_sensor" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\common\serial.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\light_sensor\light_sensor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\light_sensor\light_sensor.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">
