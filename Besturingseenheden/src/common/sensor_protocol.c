@@ -15,10 +15,10 @@ int serialize_sensor_data(SensorData* data, char* buffer)
             sprintf(buffer, "%d:%f\n", data->type, data->data.temperature);
             break;
         case SENSOR_TYPE_LIGHT:
-            sprintf(buffer, "%d:%f\n", data->type, data->data.light_intensity);
+            sprintf(buffer, "%d:%d\n", data->type, data->data.light_intensity);
             break;
         case SENSOR_TYPE_DISTANCE:
-            sprintf(buffer, "%d:%d\n", data->type, data->data.distance);
+            sprintf(buffer, "%d:%f\n", data->type, data->data.distance);
             break;
         default:
             return 0;
