@@ -138,6 +138,7 @@
     <Folder Include="src\" />
     <Folder Include="src\common" />
     <Folder Include="src\light_sensor" />
+    <Folder Include="src\distance_sensor" />
     <Folder Include="src\temperature_sensor" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,12 @@
     <Compile Include="src\common\AVR_TTC_scheduler.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\common\config.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\common\config.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\common\sensor_protocol.c">
       <SubType>compile</SubType>
     </Compile>
@@ -163,6 +170,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\common\serial.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\distance_sensor\distance_sensor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\distance_sensor\distance_sensor.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\light_sensor\light_sensor.c">
